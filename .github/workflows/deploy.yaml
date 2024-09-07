@@ -9,9 +9,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     concurrency: ci-${{github.ref}}
-    strategy:
-      matrix:
-        node-version: [18]
     steps:
       - name: Checkout 📝
         uses: actions/checkout@v3
@@ -19,7 +16,7 @@ jobs:
       - name: Configure Node 🔎
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '^18.0.0 '
 
       - name: Install 💻
         run: yarn install
