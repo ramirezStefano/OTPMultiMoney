@@ -7,13 +7,13 @@ interface OPTFormProps {
 }
 
 /**
- * @expectedOPT - Expected password for the form, passed from GET URL
- * @formFieldAmount - Amount of input fields for the OTP Form
- * @returns OPTForm Component
+ * @expectedOPT  Expected password for the form, passed from GET URL
+ * @formFieldAmount  Amount of input fields for the OTP Form
+ * @returns OPT Form Component
  */
 const OPTForm: FC<OPTFormProps> = ({
   expectedOTP = undefined,
-  formFieldAmount = 4, // default to 4, can be overwritten with prop.
+  formFieldAmount = 4,
 }) => {
   const [valid, setValid] = useState(false)
   const [inputValues, setInputValues] = useState<string[]>(
@@ -55,7 +55,7 @@ const OPTForm: FC<OPTFormProps> = ({
 
   const handleSubmit = () => {
     const otp = inputValues.join('')
-    console.log(otp)
+    console.log(`OPT correct with value: ` + otp)
   }
 
   const focusInput = (
