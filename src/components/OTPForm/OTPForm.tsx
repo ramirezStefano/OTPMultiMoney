@@ -53,6 +53,27 @@ const OPTForm: FC<OPTFormProps> = ({
     }
   }
 
+  const handlePaste = (paste: React.ClipboardEvent<HTMLInputElement>) => {
+    const clip = paste.clipboardData.getData('text').trim()
+    if (!/^\d+$/.test(clip)) {
+      paste.preventDefault()
+      return
+    }
+
+    const otp = clip.slice(0, formFieldAmount).split('')
+    setInputValues(otp)
+
+    otp.forEach((char, index) => {
+      const inputRef = otpInputs[index].current
+      if (inputRef) {
+        inputRef.value = char
+      }
+    })
+
+    paste.preventDefault()
+    focusInput(otpInputs, 0)
+  }
+
   const handleSubmit = () => {
     const otp = inputValues.join('')
     console.log(`OPT correct with value: ` + otp)
@@ -100,6 +121,7 @@ const OPTForm: FC<OPTFormProps> = ({
           {otpInputs.map((inputRef, index) => (
             <input
               key={index}
+              // text="0"
               type="text"
               className="w-10 h-10 text-center mx-1 border border-gray-300 rounded-lg"
               maxLength={1}
@@ -109,6 +131,7 @@ const OPTForm: FC<OPTFormProps> = ({
               }
               onKeyDown={(e) => handleKeyDown(otpInputs, index, e)}
               onClick={() => focusInput(otpInputs, index)}
+              onPaste={handlePaste}
             />
           ))}
         </div>
