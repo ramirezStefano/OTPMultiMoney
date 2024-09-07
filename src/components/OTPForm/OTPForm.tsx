@@ -64,7 +64,7 @@ const OPTForm: FC<OPTFormProps> = ({
     setInputValues(otp)
 
     otp.forEach((char, index) => {
-      const inputRef = otpInputs[index].current
+      const inputRef = otpInputs[index].current as HTMLInputElement | null
       if (inputRef) {
         inputRef.value = char
       }
