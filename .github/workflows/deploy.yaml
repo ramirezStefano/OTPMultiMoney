@@ -1,27 +1,26 @@
-name: Build and Deploy
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
-
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
-    concurrency: ci-${{github.ref}}
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [18]
     steps:
-      - name: Checkout 📝
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - uses: yarn/action-setup@v3
+        with:
+          version: 8
 
-      - name: Configure Node 🔎
+      - name: Use Node.js ${{ matrix.node-version }} 🎛️
         uses: actions/setup-node@v3
         with:
-          node-version: '^18.0.0 '
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
-      - name: Install 💻
+      - name: Install dependencies with yarn 📟
         run: yarn install
-
-      - name: Build 🛠️
+      - name: Build
         run: yarn build
 
       - name: Deploy 🚀
