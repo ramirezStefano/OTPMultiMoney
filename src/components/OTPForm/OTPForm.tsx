@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { FC, useEffect, useRef, useState } from 'react'
 
-interface OPTFormProps {
-  formFieldAmount?: number
+interface OTPFormProps {
+  formFieldAmount: number
   expectedOTP: string | undefined
 }
 
 /**
- * @expectedOPT  Expected password for the form, passed from GET URL
+ * @expectedOTP  Expected password for the form, passed from GET URL
  * @formFieldAmount  Amount of input fields for the OTP Form
- * @returns OPT Form Component
+ * @returns OTP Form Component
  */
-const OPTForm: FC<OPTFormProps> = ({
+const OTPForm: FC<OTPFormProps> = ({
   expectedOTP = undefined,
   formFieldAmount = 4,
 }) => {
@@ -156,4 +156,4 @@ const OPTForm: FC<OPTFormProps> = ({
   )
 }
 
-export { OPTForm }
+export { OTPForm }
