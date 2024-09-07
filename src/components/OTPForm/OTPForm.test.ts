@@ -1,28 +1,16 @@
-import { test } from 'vitest'
-// import { render, fireEvent } from '@testing-library/react'
-// import { OPTForm } from './OTPForm'
+// import { describe, expect, test } from 'vitest'
+// import { render, screen } from '@testing-library/react'
+// import { OTPForm } from './OTPForm'
 
-// test('renders OTP form correctly', () => {
-// Mock expected OTP value
-//   const expectedOTP = '1234'
-
-// Render the OTPForm component
-//   const { container } = render(<OPTForm expectedOTP={expectedOTP} />)
-
-// Add your assertions here
+// describe('OTPForm Component', () => {
+//   test('OTP renders on screen', () => {
+//     render(<OTPForm formFieldAmount={4} expectedOTP="1234" />) // buggy
+//     const element = screen.getByText(/Te enviamos un SMS/i)
+//     expect(element).toBeTruthy()
+//   })
+//   test('OTP renders on screen', () => {
+//     render(<OTPForm formFieldAmount={4} expectedOTP="1234" />) //
+//     const element = screen.getByText(/Continuar/i)
+//     expect(element).toBeTruthy()
+//   })
 // })
-
-test('enters OTP correctly and submits form', () => {
-  // Mock expected OTP value
-  //   const expectedOTP = '1234'
-  // Render the OTPForm component
-  //   const { container } = render(<OPTForm expectedOTP={expectedOTP} />)
-  // Get input elements
-  //   const inputElements = container.querySelectorAll('input')
-  // Simulate entering OTP
-  //   inputElements.forEach((input, index) => {
-  // fireEvent.change(input, { target: { value: expectedOTP[index] } })
-  // Submit the form
-  //   fireEvent.click(container.querySelector('button'))
-  // Add your assertions here
-})
